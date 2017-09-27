@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多图上传</title>
+		<script type="text/javascript" src="javascripts/jquery-3.1.1.min.js"></script>
+        <style>
+            img{width:20vw;height: 30vh;-webkit-filter:saturate(1.2);margin:0 2vw 3vh 0;
+                    box-shadow:0 0 5vh rgba(0,0,0,.3);}
+                    ul li{overflow: hidden;list-style: none;background: lime}
+                    ul li h3,ul li img{float: left;}
+                    h3{display: inline-block;}
+
+        </style>
+	</head>
+	<body>
+
+        <h1 class="msg"></h1>
+		<input type="text" name="me" placeholder="用户名" id="bTitle">
+		<input type="bTxtword" name="me" placeholder="密码" id="bTxt">
+		<input type="file" accept="image/*"  onchange="setFiles(this)" multiple  id="me">
+		<button id="upload">上传</button>
+		<button id="show">展示图片</button>
+
+
+        <div id="photo">
+            <ul id="picList">
+                <li></li>
+            </ul>
+        </div>
+
+
+<script>
+
+        var myDomain='http://localhost:3000/';
+
+		var myFiles=[];
+		  function setFiles(element){
+		  	console.log(element.files);
+            for(var x in element.files){
+                myFiles.push(element.files[x]);
+                console.log(myFiles);
+            }
+		  }
+
+
+
+
+
+			$('#upload').click(function(){
+				var fd=new FormData();  //表单处理数据的方法
+				fd.enctype="multipart/form-data";
+                var fileArray=[].slice.call(me.files,0);//类数组转换为数组
+                 fileArray.forEach(function(file){
+                    fd.append("uploadedFile",file);//循环遍历把文件对象插到formData对象上
+                  });
+
+                // fd.append('uploadedFile',myFiles); //用append方法以键值对的方式保存
+//                    console.log(fd);        //===>  FormData {}
+
+
+               // console.log($('#bTitle').val(), $('#bTxt').val());
+                    $.ajax({
+                                type:"post",
+                                url:myDomain+"imgs/adds",
+                                async:true,
+                                data:fd,
+                                contentType:false,
+                                processData:false,
+                                success:function(x){
+                                    console.log(x);
+                                // 在下面用再次调用ajax 向
+
+                                  // $.ajax({
+                                  //       type:"post",
+                                  //       url:myDomain+"imgs/addPic_sql",
+                                  //       async:true,
+                                  //        data:{
+                                  //              'URL':x,
+                                  //              'bTitle':$('#bTitle').val(),
+                                  //              'bTxt':$('#bTxt').val()
+                                  //        },
+                                  //       success:function(v){
+                                  //           console.log(v);
+                                  //             // $.ajax({
+                                  //             //       type:"get",
+                                  //             //       url:myDomain+"imgs/getPic",
+                                  //             //       async:true,
+                                  //             //       success:function(x){
+                                  //             //              console.log(x);
+                                  //             //       }
+                                  //             //   });
+
+                                  //       }
+                                  //   });
+                                },
+                                error:function(){
+                                            $('.msg').text('出错啦！')
+                                }
+
+                            });
+})
+
+
+
+
+
+		$('#show').click(function () {
+            // 获取图片
+            $.ajax({
+                type:"get",
+                url:myDomain+"imgs/getpic",
+                async:true,
+                success:function(x){
+                    console.log(x);
+                    if(x.length>0){
+                        for(var i=0;i<x.length;i++){
+                            // console.log(`${myDomain}images/${x[i].PicURL}`);
+                            $('#photo').append(`<img src="${myDomain}images/Pic_${x[i].PicURL}" alt="失败了"/>`);
+                        }
+                    }else{
+                        alert('木有图片！')
+                    }
+                }
+            });
+        });
+
+
+</script>
+	</body>
+</html>

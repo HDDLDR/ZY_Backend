@@ -7,7 +7,11 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var menu = require('./routes/menu');
+var menu = require('./routes/menu');					//顶部导航
+var HomeFooter = require('./routes/Home_footer');		//底部公司信息
+var ImgSUpload = require('./routes/imgs');     		 //后台修改轮播图
+var HomeBanner = require('./routes/HomeBanner');      //首页轮播图部分
+
 
 var app = express();
 
@@ -25,7 +29,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/menu', menu);
+app.use('/menu', menu);       //首页__导航
+app.use('/ZoeFooter',HomeFooter);	//首页__底部
+app.use('/imgs', ImgSUpload);		//
+app.use('/HB', HomeBanner);  		//首页轮播图
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
