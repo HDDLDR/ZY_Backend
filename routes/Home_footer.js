@@ -32,7 +32,6 @@ function getUserByName(sql,arrs,callback){
 
 //底部公司信息
 router.get('/CPY_info', function(req, res, next) {
-	// res.header("Access-Control-Allow-Origin", "*"); //跨域
  	getUserByName(`select * from Home_footer`,[],function(err,rows){
  		// console.log(rows);
  		res.send(rows);
