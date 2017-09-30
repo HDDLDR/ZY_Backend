@@ -45,17 +45,17 @@ router.get('/mylist', function(req, res, next) {
 
      if(orADD!='true'&&does=='save'){
      //改
-         getUser(`update menu set content=? where uid=?`,[txt,uid],function(err, rows, ) {
+         getUser(`update menu set content=? where uid=?`,[txt,uid],function(err, rows) {
              res.send({flag:0});
          })
      }else if(orADD=='true' && does=='save'){
          //增
-             getUser(`insert into menu(uid,content) values(?,?)`,[txt,uid],function(err, rows, ) {
+             getUser(`insert into menu(uid,content) values(?,?)`,[txt,uid],function(err, rows) {
              res.send({flag:1});
          	})
      }else if(does=='dele'){
       //删
-	      getUser(`delete from menu where uid=?`,[uid],function(err, rows, ) {
+	      getUser(`delete from menu where uid=?`,[uid],function(err, rows) {
              res.send({flag:2});
          	})
      }
