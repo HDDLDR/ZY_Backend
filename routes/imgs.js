@@ -15,9 +15,8 @@ var pool=mysql.createPool({
 });
 
 
-
-/**************************************** 【轮播图List】************************************************/
 router.post('/adds',function(req,res,next){
+	res.header("Access-Control-Allow-Origin", "*"); //跨域
 	var form = new formidable.IncomingForm();		//创建IncomingForm对象
     form.encoding = "utf-8";  //设定文件的编码
 	form.uploadDir='public/images';
@@ -54,8 +53,9 @@ router.post('/adds',function(req,res,next){
 
 
 
-//修改【轮播图list信息】
-router.post('/setPic_sql',function(req,res,next) {
+//修改轮播图list信息
+router.post('/setPic_sql',function(req,res) {
+    res.header("Access-Control-Allow-Origin", "*");
     var bTitle=req.body['bTitle'];
     var bTxt=req.body['bTxt'];
     var URL=req.body['URL'];
@@ -71,9 +71,10 @@ router.post('/setPic_sql',function(req,res,next) {
 })
 
 
+
 //接受要删除的图的路径并删除文件
-router.post('/delePic_sql',function(req,res,next) {
-    // res.header("Access-Control-Allow-Origin", "*");
+router.post('/delePic_sql',function(req,res) {
+    res.header("Access-Control-Allow-Origin", "*");
     var deleURL=req.body['deleURL'];
     console.log(deleURL);
 
@@ -81,11 +82,6 @@ router.post('/delePic_sql',function(req,res,next) {
     	res.send({deleMsg:'已删除旧图!'});
     });
 })
-
-/**************************************** end ************************************************/
-
-
-
 
 
 

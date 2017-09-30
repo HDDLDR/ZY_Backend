@@ -21,11 +21,7 @@ var pool=mysql.createPool({
 //导航    (前后台获取导航内容)
 router.get('/mylist', function(req, res, next) {
 	// res.header("Access-Control-Allow-Origin", "*"); //跨域
- 	// getUser(`select * from menu`,[],function(err,rows){
- 	// 	// console.log(rows);
- 	// 	res.send(rows);
- 	// });
- 	getUser(`select * from menu `,[],function(err,rows){
+ 	getUser(`select * from menu`,[],function(err,rows){
  		res.send(rows);
  	});
 });
@@ -94,4 +90,16 @@ function getUser(sql,arrs,callback){
 }
 
 
+<<<<<<< HEAD
+//导航
+router.get('/mylist', function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*"); //跨域
+ 	getUserByName('select * from menu',[],function(err,rows){
+ 		console.log(rows);
+ 		res.send(rows);
+ 	});
+});
+
+=======
+>>>>>>> origin/master
 module.exports = router;
