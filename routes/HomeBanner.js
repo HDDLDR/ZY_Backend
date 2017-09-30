@@ -30,12 +30,12 @@ function getUsers(sql,arrs,callback){
 
 
 //Home__轮播图__图和文字信息
-// router.get('/Home_bannerPic',function(req,res) {
-//     res.header("Access-Control-Allow-Origin", "*");
-// 	   getUsers(`select * from home_bannertxt`,[], function(err, rows, fields) {
-// 		       res.send(rows);
-// 		});
-// })
+router.get('/Home_bannerPic',function(req,res) {
+    res.header("Access-Control-Allow-Origin", "*");
+	   getUsers(`select * from home_bannertxt`,[], function(err, rows, fields) {
+		       res.send(rows);
+		});
+})
 
 
 //Home__轮播图下的list

@@ -89,8 +89,6 @@ function getUser(sql,arrs,callback){
 	})
 }
 
-
-<<<<<<< HEAD
 //导航
 router.get('/mylist', function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*"); //跨域
@@ -100,6 +98,4 @@ router.get('/mylist', function(req, res, next) {
  	});
 });
 
-=======
->>>>>>> origin/master
 module.exports = router;
