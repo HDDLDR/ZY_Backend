@@ -6,14 +6,22 @@ var router=express.Router();
 
 
 
-var pool=mysql.createPool({
-	host:'127.0.0.1',
-	user:'root',
-	password:'root',
-	database:'zy_design',
-	port:3306
-});
+// var pool=mysql.createPool({
+// 	host:'127.0.0.1',
+// 	user:'root',
+// 	password:'root',
+// 	database:'zy_design',
+// 	port:3306
+// });
 
+
+var pool = mysql.createPool({
+    host:'127.0.0.1',
+    user:'root',
+    password:'cjd970110', //MySQL安装时设置的密码
+    database:'zy_design', //数据库名称
+    port:'3307' //端口号
+});
 
 router.post('/adds',function(req,res,next){
 	res.header("Access-Control-Allow-Origin", "*"); //跨域
