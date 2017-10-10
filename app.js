@@ -30,6 +30,7 @@ var menu = require('./routes/menu');					//顶部导航
 var HomeFooter = require('./routes/Home_footer');		//底部公司信息
 var ImgSUpload = require('./routes/imgs');     		 //后台修改轮播图
 var HomeBanner = require('./routes/HomeBanner');      //首页轮播图部分
+var Recom = require('./routes/Recommond');      //热销推荐
 
 var app = express();
 
@@ -70,6 +71,7 @@ app.use('/menu', menu);       //首页__导航
 app.use('/ZoeFooter',HomeFooter);	//首页__底部
 app.use('/imgs', ImgSUpload);		//
 app.use('/HB', HomeBanner);  		//首页轮播图
+app.use('/RC', Recom);  		//热销推荐
 
 
 

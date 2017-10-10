@@ -29,28 +29,10 @@ function getUsers(sql,arrs,callback){
 }
 
 
-//Home__轮播图__图和文字信息
-router.get('/Home_bannerPic',function(req,res) {
+//热销推荐__
+router.post('/msgList',function(req,res) {
     res.header("Access-Control-Allow-Origin", "*");
-	   getUsers(`select * from home_bannertxt`,[], function(err, rows, fields) {
-		       res.send(rows);
-		});
-})
-
-
-//Home__轮播图下的list
-router.get('/Home_bannerList',function(req,res) {
-    res.header("Access-Control-Allow-Origin", "*");
-	   getUsers(`select * from home_bannerlist`,[], function(err, rows, fields) {
-		       res.send(rows);
-		});
-})
-
-
-//Home__热销推荐
-router.get('/Home_recom',function(req,res) {
-    res.header("Access-Control-Allow-Origin", "*");
-	   getUsers(`select * from home_recom`,[], function(err, rows, fields) {
+	   getUsers(`select * from recom_news`,[], function(err, rows, fields) {
 		       res.send(rows);
 		});
 })
