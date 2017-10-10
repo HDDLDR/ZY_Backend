@@ -3,7 +3,6 @@ var mysql = require('mysql');
 var router = express.Router();
 
 
-
 //创建连接池   createPool
 var pool=mysql.createPool({
     host:'127.0.0.1',		//localhost
@@ -14,10 +13,6 @@ var pool=mysql.createPool({
 
 });
 
-
-
-
-
 //导航    (前后台获取导航内容)
 router.get('/mylist', function(req, res, next) {
 	// res.header("Access-Control-Allow-Origin", "*"); //跨域
@@ -25,14 +20,6 @@ router.get('/mylist', function(req, res, next) {
  		res.send(rows);
  	});
 });
-
-
-
-
-
-
-
-
 
  router.post('/Nav_Do', function(req, res, next) {
  	res.header("Access-Control-Allow-Origin", "*"); //跨域
@@ -59,7 +46,7 @@ router.get('/mylist', function(req, res, next) {
              res.send({flag:2});
          	})
      }
-})
+});
 
 
 
