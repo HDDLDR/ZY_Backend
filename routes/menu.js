@@ -5,15 +5,23 @@ var router = express.Router();
 
 
 //创建连接池   createPool
-var pool=mysql.createPool({
-    host:'127.0.0.1',		//localhost
-    user:'root',   			//用户名
-    password:'root',    	//密码
-    database:'zy_design', 		//数据库
-    port:3306  	 			//端口号
+// var pool=mysql.createPool({
+//     host:'127.0.0.1',		//localhost
+//     user:'root',   			//用户名
+//     password:'root',    	//密码
+//     database:'zy_design', 		//数据库
+//     port:3306  	 			//端口号
 
+// });
+
+
+var pool = mysql.createPool({
+    host:'127.0.0.1',
+    user:'root',
+    password:'cjd970110', //MySQL安装时设置的密码
+    database:'zy_design', //数据库名称
+    port:'3307' //端口号
 });
-
 
 
 
